@@ -14,9 +14,19 @@ export default function CartPage(props){
         props.setquants(tempq)
         setabc(tempq[[id,siz]])
     }
+
+    const filtercart=(word,id,siz)=>{
+        if (word[0]===id && word[1]===siz){
+            return false
+        }
+        else{
+            return true
+        }
+
+    }
     const subst=(id,siz)=>{
         if (tempq[[id,siz]]===1){
-            props.setcart(props.cart.filter(word=>word[0]!==id))
+            props.setcart((props.cart.filter((word)=> filtercart(word,id,siz))))
 
             delete tempq[[id,siz]]
 

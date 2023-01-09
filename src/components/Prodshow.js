@@ -15,7 +15,11 @@ function Prodshow({prdata,quants,setquants,cart,setcart}){
 
 
         if ( checkex(id,event.target.val.value)){
-            alert("Already in cart")
+            //alert("Already in cart")
+            let tempq=quants
+            tempq[[id,event.target.val.value]]=tempq[[id,event.target.val.value]]+1
+            setquants(tempq)
+            //setabc(tempq[[id,event.target.val.value]])
         }
         else{
 
