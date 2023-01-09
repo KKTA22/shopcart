@@ -5,8 +5,9 @@ import { useEffect, useState } from 'react';
 import Paging from './components/Paging';
 import CartPage from './components/CartPage';
 import Filter from './components/Filter';
+import { auth } from './services/firebase'
 
-function App() {
+function App({ user }) {
     const [loading,setloading]=useState(true)
     const [prdata,setprdata]=useState()
     const [cart,setcart]=useState([])
@@ -28,8 +29,17 @@ function App() {
 
       })();
     },[]);
+
   return (
     <div className="App">
+
+    <div className="logged" style={{padding:"10%"}}>
+      <h1>Hello, <span></span>{user.displayName}</h1>
+      <img src={user.photoURL} alt="" />
+      <button className="button signout" onClick={() => auth.signOut()}>Sign out</button>
+
+    </div>
+
       <button onClick={()=>{setcarton(true)}}>Cart</button>
       <p>
         Select products per page
