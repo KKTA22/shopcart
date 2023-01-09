@@ -42,7 +42,7 @@ function Prodshow({prdata,quants,setquants,cart,setcart}){
 
 
             <form type="submit" onSubmit={(event)=>{addcart(event,item.id)}} >
-
+            <p>Choose size:
             <select name="val" >
 
             {item.sizes.map((it)=>
@@ -52,6 +52,7 @@ function Prodshow({prdata,quants,setquants,cart,setcart}){
 
             )}
             </select>
+            </p>
 
             <button type="submit" >Add to cart</button>
             </form>

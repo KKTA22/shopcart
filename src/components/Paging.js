@@ -5,7 +5,6 @@ import Stack from '@mui/material/Stack';
 
 export default function Paging(props){
   const [page, setPage] = React.useState(1);
-
     const prdata=props.prdata
     const ppn=props.ppn
     const c = Math.ceil(prdata.length/ppn)
