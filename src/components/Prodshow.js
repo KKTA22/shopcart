@@ -1,4 +1,4 @@
-function Prodshow({ prdata, quants, setquants, cart, setcart }) {
+function Prodshow({ prdata, quants, setquants, cart, setcart, setcarton }) {
   const checkex = (id, value) => {
     return (
       cart.filter((item) => item[0] === id && item[1] === value).length > 0
@@ -6,7 +6,7 @@ function Prodshow({ prdata, quants, setquants, cart, setcart }) {
   };
   const addcart = (event, id) => {
     event.preventDefault();
-
+    setcarton(false);
     if (checkex(id, event.target.val.value)) {
       //alert("Already in cart")
       let tempq = quants;

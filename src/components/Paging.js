@@ -15,7 +15,15 @@ export default function Paging(props) {
   };
 
   return (
-    <div style={{ display: "block", padding: 30, left: "auto", right: "auto" }}>
+    <div
+      style={{
+        display: "block",
+        padding: 30,
+        left: "auto",
+        right: "auto",
+        zIndex: "15",
+      }}
+    >
       <h1>Please take a look at our products</h1>
       <Stack alignItems="center">
         <Pagination
@@ -30,6 +38,7 @@ export default function Paging(props) {
         setcart={props.setcart}
         quants={props.quants}
         setquants={props.setquants}
+        setcarton={props.setcarton}
       />
     </div>
   );

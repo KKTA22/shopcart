@@ -17,8 +17,8 @@ function Home() {
   console.log(user);
 
   return (
-    <div className="app" style={{ display: "flex" }}>
-      <h1>Welcome to Shopcart</h1>
+    <div className="app" >
+      <h1 className="headi">Welcome to Shopcart</h1>
       {user ? <App user={user} /> : <Login />}
     </div>
   );

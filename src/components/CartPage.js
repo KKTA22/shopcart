@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 
 export default function CartPage(props) {
@@ -10,6 +10,7 @@ export default function CartPage(props) {
     tempq[[id, siz]] = tempq[[id, siz]] + 1;
     props.setquants(tempq);
     setabc(tempq[[id, siz]]);
+    calctot();
   };
 
   const filtercart = (word, id, siz) => {
@@ -33,7 +34,24 @@ export default function CartPage(props) {
       props.setquants(tempq);
       setabc(tempq[[id, siz]]);
     }
+    calctot();
   };
+
+  console.log(props.quants);
+  const calctot = () => {
+    let tot = 0;
+    console.log("run");
+    props.cart.map(
+      (item) =>
+        (tot =
+          tot +
+          props.prdata.filter((word) => word.id === item[0])[0].price *
+            props.quants[[item[0], item[1]]])
+    );
+    props.settp(tot);
+  };
+  calctot();
+
   return ReactDOM.createPortal(
     <div
       style={{
@@ -41,8 +59,9 @@ export default function CartPage(props) {
         display: "",
         backgroundColor: "rgba(206, 183, 183, 0.9)",
         zIndex: "100",
-        position: "absolute",
+        position: "relative",
         padding: "10%",
+        height: "100%",
       }}
     >
       <button
@@ -63,7 +82,8 @@ export default function CartPage(props) {
 
           <h3>size:{item[1]}</h3>
 
-          <h3>Quantity:{tempq[[item[0], item[1]]]}</h3>
+          <h3>Quantity:{props.quants[[item[0], item[1]]]}</h3>
+          <h3>Price:${props.prdata.filter((word) => word.id === item[0])[0].price}</h3>
 
           <button
             onClick={() => {
@@ -82,8 +102,10 @@ export default function CartPage(props) {
           </button>
         </div>
       ))}
+      <div>Total price=${Math.round(props.tp*100)/100}</div>
+
       <button
-        style={{ padding: "5%", margin: "5%" }}
+        style={{ padding: "1%", margin: "1%" }}
         onClick={() => {
           alert("Not allowed to check out");
         }}

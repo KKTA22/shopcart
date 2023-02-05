@@ -14,6 +14,7 @@ function App({ user }) {
   const [carton, setcarton] = useState(false);
   const [ppn, setppn] = useState(3);
   const [filtprd, setfiltprd] = useState();
+  const [tp, settp] = useState(0);
 
   const handlech = (event) => {
     setppn(event.target.value);
@@ -34,8 +35,26 @@ function App({ user }) {
           Hello, <span></span>
           {user.displayName}
         </h1>
-        <img src={user.photoURL} alt="" />
-        <button className="button signout" onClick={() => auth.signOut()}>
+        <img
+          src={user.photoURL}
+          alt=""
+          style={{
+            width: "5%",
+            height: "5%",
+            marginTop: "0%",
+            marginLeft: "3%",
+          }}
+        />
+        <button
+          className="button signout"
+          onClick={() => auth.signOut()}
+          style={{
+            width: "15%",
+            height: "5%",
+            marginTop: "0%",
+            marginLeft: "3%",
+          }}
+        >
           Sign out
         </button>
       </div>
@@ -64,6 +83,8 @@ function App({ user }) {
           quants={quants}
           setquants={setquants}
           setcart={setcart}
+          tp={tp}
+          settp={settp}
         />
       ) : (
         <></>
@@ -79,6 +100,7 @@ function App({ user }) {
             cart={cart}
             setquants={setquants}
             quants={quants}
+            setcarton={setcarton}
           />
         </div>
       )}
