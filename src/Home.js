@@ -7,19 +7,21 @@ import "./App.css";
 
 function Home() {
   const [user, setUser] = useState(null);
+  const [loading, setloading] = useState(true);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setUser(user);
+      setloading(false);
     });
   }, []);
 
   console.log(user);
 
   return (
-    <div className="app" >
+    <div className="app">
       <h1 className="headi">Welcome to Shopcart</h1>
-      {user ? <App user={user} /> : <Login />}
+      {loading ? <h1>Loading</h1> : user ? <App user={user} /> : <Login />}
     </div>
   );
 }
